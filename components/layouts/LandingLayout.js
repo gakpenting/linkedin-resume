@@ -8,7 +8,7 @@ export default function LandingLayout(props) {
     <Flex
     
       direction="column"
-      align="center"
+      // align="center"
 
       m="0 auto"
       {...props}

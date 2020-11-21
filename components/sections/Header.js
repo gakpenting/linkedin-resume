@@ -1,11 +1,12 @@
 import React from "react";
-import { Box, Flex, Text,Select} from "@chakra-ui/react";
+import { Box, Flex, Text,Select,Link} from "@chakra-ui/react";
 import Logo from "../ui/Logo";
-
+import { Link as ReachLink } from "@reach/router"
 
 const MenuItems = props => {
   const { children, isLast, to = "/", ...rest } = props;
   return (
+    <Link href={to}>
     <Text
       mb={{ base: isLast ? 0 : 8, sm: 0 }}
       mr={{ base: 0, sm: isLast ? 0 : 8 }}
@@ -15,6 +16,7 @@ const MenuItems = props => {
     >
       {children}
     </Text>
+    </Link>
   );
 };
 
@@ -58,10 +60,12 @@ const Header = props => {
       {...props}
     >
       <Flex align="center">
+        <Link  href="/">
         <Logo
           w="100px"
           color={["white", "white", "primary.500", "primary.500"]}
         />
+        </Link>
       </Flex>
 
       <Box display={{ base: "block", md: "none" }} onClick={toggleMenu}>
@@ -78,15 +82,15 @@ const Header = props => {
           direction={["column", "row", "row", "row"]}
           pt={[4, 4, 0, 0]}
         >
-          <MenuItems as="button" to="/">Projects</MenuItems>
-          <MenuItems as="button" to="/how">Open Source </MenuItems>
-          <MenuItems as="button" to="/faetures">Blog </MenuItems>
+          <MenuItems as="button" to="/projects">Projects</MenuItems>
+          <MenuItems as="button" to="/open-source">Open Source </MenuItems>
+          <MenuItems as="button" to="/blog">Blog </MenuItems>
           
-          <MenuItems to="/pricing"><Select bg="white" >
+          {/* <MenuItems ><Select bg="white" >
   <option value="option1" selected="true">English</option>
   <option value="option2">Indonesia</option>
   
-</Select> </MenuItems>
+</Select> </MenuItems> */}
         </Flex>
       </Box>
     </Flex>

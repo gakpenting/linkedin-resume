@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import marked from "marked"
 import {
   VStack,
   Flex,
@@ -14,14 +14,14 @@ function Feature({ title, desc, ...rest }) {
       p={3}
       shadow="md"
       borderWidth="1px"
-      borderColor="green.500"
-    
+      borderColor="green.500"    
       borderRadius="md"
       {...rest}
-      cursor="pointer"
+      
     >
       <Heading fontSize="xl">{title}</Heading>
-      <Text >{desc}</Text>
+      <div dangerouslySetInnerHTML={{__html:marked('# Marked in the browser\n\nRendered by **marked**.')}} />
+      
     </Box>
   )
 }
@@ -36,16 +36,7 @@ export default function Hero({
     >
       <VStack align="stretch">
         
-          <Heading
-            as="h1"
-            size="xl"
-            fontWeight="bold"
-            color="primary.800"
-            mb={5}
-          >
-         Projects
-          </Heading>
-         
+        
           <Feature
       
         title="Plan Money"

@@ -14,7 +14,8 @@ export default function Home() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
-      <LandingLayout height="100% !important" bg="green.100">
+      <LandingLayout align="center" height="100% !important" bg="green.100">
+
         <Hero />
         <Projects />
         <OpenSource />

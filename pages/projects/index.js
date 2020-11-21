@@ -1,7 +1,7 @@
 //pages/index.js
 import Head from "next/head";
-import LandingLayout from "../components/layouts/LandingLayout";
-import HeroProjects from "../components/sections/HeroProjects";
+import LandingLayout from "../../components/layouts/LandingLayout";
+import HeroProjects from "../../components/sections/HeroProjects";
 export default function Home() {
   return (
     <>

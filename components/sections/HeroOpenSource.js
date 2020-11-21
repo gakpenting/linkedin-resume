@@ -43,7 +43,7 @@ export default function Hero({
             color="primary.800"
             mb={5}
           >
-         Projects
+         Open Source
           </Heading>
          
           <Feature
