@@ -9,7 +9,7 @@ import ResumeEducation from "../components/sections/ResumeEducation";
 import ResumeExperience from "../components/sections/ResumeExperience";
 import {Flex,Box} from "@chakra-ui/react"
 //081217925090
-export default function Home() {
+export default function Home({profile}) {
   return (
     <>
       <Head>
@@ -24,7 +24,7 @@ export default function Home() {
     m="0 auto"
    
   >
- <ResumeHeader />
+ <ResumeHeader profile={profile}/>
    
   </Flex>
 <Box style={{pageBreakInside:"auto"}} mt={5}>
@@ -47,4 +47,21 @@ export default function Home() {
     </Box>  
     </>
   );
+}
+
+
+export async function getStaticProps() {
+  const serverClient = new faunadb.Client({ secret: process.env.FAUNA_SECRET });
+  const profile=await serverClient.query(
+    q.Map(
+        q.Paginate(q.Documents(q.Collection('profile'))),
+        q.Lambda(x => q.Get(x))
+      )
+  );
+  
+  return {
+    props: {
+      profile:profile.data[0],
+    },
+  }
 }
