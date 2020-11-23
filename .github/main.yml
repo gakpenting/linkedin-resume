@@ -1,0 +1,25 @@
+name: Save resume pdf to artifact
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  pdf:
+    name: Generate PDF
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: set up nodejs
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: "12"
+      - name: generate pdf
+        run: node capture.js
+      - name: Upload PDF
+        uses: actions/upload-artifact@v1
+        with:
+          name: resume
+          path: febriano-resume.pdf
