@@ -17,7 +17,9 @@ jobs:
         with:
           node-version: "12"
       - name: generate pdf
-        run: node capture.js
+        run: |
+          npm install
+          node capture.js
       - name: Upload PDF
         uses: actions/upload-artifact@v1
         with:
