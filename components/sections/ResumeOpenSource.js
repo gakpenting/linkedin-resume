@@ -15,13 +15,14 @@ import { PhoneIcon } from "@chakra-ui/icons";
 function Feature({ title, desc,link, ...rest }) {
   return (
     <Box
+    style={{pageBreakAfter:"auto",pageBreakInside:"avoid"}} position="relative"
       p={3}
       shadow="md"
       borderWidth="1px"
       borderColor="green.500"
       borderRadius="md"
       {...rest}
-      
+      mb={3}
     >
       <Heading fontSize="xl">{title}</Heading>
       <HStack spacing={2} my={2}>
@@ -44,7 +45,7 @@ export default function Hero({
 }) {
   return (
     <Box wrap="no-wrap" px={8} {...rest}>
-      <Stack>
+      {/* <Stack> */}
         <Heading as="h1" size="xl" fontWeight="bold" color="primary.800">
           Open Source Contribution
         </Heading>
@@ -53,7 +54,7 @@ export default function Hero({
           title="Plan Money"
           desc="The future can be even brighter but a goal without a plan is just a wish"
         />
-      </Stack>
+      {/* </Stack> */}
     </Box>
   );
 }

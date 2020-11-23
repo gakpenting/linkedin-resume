@@ -9,7 +9,6 @@ Link,
   Flex,
   Badge,
   HStack,
-  Button,
   
 } from "@chakra-ui/react";
 import { PhoneIcon } from "@chakra-ui/icons";
@@ -21,10 +20,9 @@ function Feature({ title, desc,link, ...rest }) {
       borderWidth="1px"
       borderColor="green.500"
       borderRadius="md"
+      mb={3}
       {...rest}
       style={{pageBreakAfter:"auto",pageBreakInside:"avoid"}} position="relative"
-      mb={3}
-      
     >
       <Heading fontSize="xl">{title}</Heading>
       <HStack spacing={2} my={2}>
@@ -49,15 +47,13 @@ export default function Hero({
     <Box wrap="no-wrap" px={8} {...rest}>
       {/* <Stack> */}
         <Heading as="h1" size="xl" fontWeight="bold" color="primary.800">
-         Skills
+         Experience
         </Heading>
-        <HStack spacing={4}>
- <Button shadow="md"
-      borderWidth="1px"
-      borderColor="green.500"
-      borderRadius="md">Green</Button>  
- 
-</HStack>
+        <Feature
+        link="http://localhost:3000"
+          title="Plan Money"
+          desc="The future can be even brighter but a goal without a plan is just a wish"
+        />
         
       {/* </Stack> */}
     </Box>

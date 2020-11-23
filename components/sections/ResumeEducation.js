@@ -16,12 +16,12 @@ function Feature({ title, desc,link, ...rest }) {
   return (
     <Box
     style={{pageBreakAfter:"auto",pageBreakInside:"avoid"}} position="relative"
-    mb={3}
       p={3}
       shadow="md"
       borderWidth="1px"
       borderColor="green.500"
       borderRadius="md"
+      mb={3}
       {...rest}
       
     >
@@ -45,40 +45,52 @@ export default function Hero({
   ...rest
 }) {
   return (
-    <Box wrap="no-wrap" px={8} {...rest}>
+    <Box style={{pageBreakAfter:"auto",pageBreakInside:"avoid"}} position="relative" wrap="no-wrap" px={8} {...rest}>
       {/* <Stack> */}
-        <Heading as="h1" size="xl" fontWeight="bold" color="primary.800">
-          Projects
+        <Heading   as="h1" size="xl" fontWeight="bold" color="primary.800">
+         Education
         </Heading>
         <Feature
+        
+        link="http://localhost:3000"
+          title="Plan Money"
+          desc="The future can be even brighter but a goal without a plan is just a wish"
+        />
+        <Feature
+        
         link="http://localhost:3000"
           title="Plan Money"
           desc="The future can be even brighter but a goal without a plan is just a wish"
         />
          <Feature
+        
         link="http://localhost:3000"
           title="Plan Money"
           desc="The future can be even brighter but a goal without a plan is just a wish"
         />
-        <Feature
+         <Feature
+        
         link="http://localhost:3000"
           title="Plan Money"
           desc="The future can be even brighter but a goal without a plan is just a wish"
         />
-        <Feature
+         <Feature
+        
         link="http://localhost:3000"
           title="Plan Money"
           desc="The future can be even brighter but a goal without a plan is just a wish"
         />
-        <Feature
+         <Feature
+     
         link="http://localhost:3000"
           title="Plan Money"
           desc="The future can be even brighter but a goal without a plan is just a wish"
         />
-        <Feature
+         <Feature
+        
         link="http://localhost:3000"
           title="Plan Money"
-          desc="The future can be even brighter but a goal without a plan is just a wish The future can be even brighter but a goal without a plan is just a wish The future can be even brighter but a goal without a plan is just a wish The future can be even brighter but a goal without a plan is just a wish The future can be even brighter but a goal without a plan is just a wish The future can be even brighter but a goal without a plan is just a wish The future can be even brighter but a goal without a plan is just a wish The future can be even brighter but a goal without a plan is just a wish"
+          desc="The future can be even brighter but a goal without a plan is just a wish"
         />
       {/* </Stack> */}
     </Box>

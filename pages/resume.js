@@ -3,9 +3,12 @@ import Head from "next/head";
 import ResumeHeader from "../components/sections/ResumeHeader";
 import ResumeProjects from "../components/sections/ResumeProjects";
 import ResumeOpenSource from "../components/sections/ResumeOpenSource";
+import ResumeHonors from "../components/sections/ResumeHonors";
 import ResumeSkills from "../components/sections/ResumeSkills";
+import ResumeEducation from "../components/sections/ResumeEducation";
+import ResumeExperience from "../components/sections/ResumeExperience";
 import {Flex,Box} from "@chakra-ui/react"
-
+//081217925090
 export default function Home() {
   return (
     <>
@@ -24,14 +27,23 @@ export default function Home() {
  <ResumeHeader />
    
   </Flex>
-<Box  mt={5}>
+<Box style={{pageBreakInside:"auto"}} mt={5}>
 <ResumeProjects />
     </Box>  
-    <Box  mt={5}>
+    <Box style={{pageBreakInside:"auto"}} mt={5}>
 <ResumeOpenSource />
     </Box>  
-    <Box  mt={5}>
+    <Box style={{pageBreakInside:"auto"}} mt={5}>
 <ResumeSkills />
+    </Box>  
+    <Box style={{pageBreakInside:"auto"}} mt={5}>
+<ResumeHonors />
+    </Box>  
+    <Box style={{pageBreakInside:"auto"}} mt={5}>
+<ResumeEducation  />
+    </Box>  
+    <Box style={{pageBreakInside:"auto"}} mt={5}>
+<ResumeExperience />
     </Box>  
     </>
   );
