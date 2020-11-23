@@ -12,7 +12,7 @@ Link,
   
 } from "@chakra-ui/react";
 import { PhoneIcon } from "@chakra-ui/icons";
-function Feature({ title, desc,link, ...rest }) {
+function Feature({ title, desc,link,date,tag, ...rest }) {
   return (
     <Box
     style={{pageBreakAfter:"auto",pageBreakInside:"avoid"}} position="relative"
@@ -26,12 +26,13 @@ function Feature({ title, desc,link, ...rest }) {
     >
       <Heading fontSize="xl">{title}</Heading>
       <HStack spacing={2} my={2}>
-      <Badge>Default</Badge><Badge>Default</Badge>
+        {tag.map(data=><Badge>{data}</Badge>)}
+      
       </HStack>
       
       <Text>{desc}</Text>
       <Flex ><Link href={link}>{link}</Link></Flex>
-      <Text fontSize={"sm"}>12/11/2020</Text>
+      <Text fontSize={"sm"}>{date}</Text>
     </Box>
   );
 }
@@ -41,20 +42,24 @@ export default function Hero({
   image,
   ctaLink,
   ctaText,
+  openSource,
   ...rest
 }) {
   return (
     <Box wrap="no-wrap" px={8} {...rest}>
-      {/* <Stack> */}
+      
         <Heading mb={2} as="h1" size="xl" fontWeight="bold" color="primary.800">
           Open Source Contribution
         </Heading>
-        <Feature
-        link="http://localhost:3000"
-          title="Plan Money"
-          desc="The future can be even brighter but a goal without a plan is just a wish"
-        />
-      {/* </Stack> */}
+        {openSource.map(data=><Feature
+        link={data.url}
+          title={data.title}
+          desc={data.description}
+          date={data.published_timestamp}
+          tag={data.tag_list.filter(tag=>tag!=="opensourcespiritbro1")}
+        />)}
+        
+      
     </Box>
   );
 }

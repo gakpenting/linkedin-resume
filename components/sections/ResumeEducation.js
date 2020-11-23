@@ -11,11 +11,9 @@ Link,
   HStack,
   
 } from "@chakra-ui/react";
-import { PhoneIcon } from "@chakra-ui/icons";
-function Feature({ title, desc,link, ...rest }) {
+function Feature({ name, date, major, ...rest }) {
   return (
     <Box
-    style={{pageBreakAfter:"auto",pageBreakInside:"avoid"}} position="relative"
       p={3}
       shadow="md"
       borderWidth="1px"
@@ -23,16 +21,12 @@ function Feature({ title, desc,link, ...rest }) {
       borderRadius="md"
       mb={3}
       {...rest}
-      
+      style={{ pageBreakAfter: "auto", pageBreakInside: "avoid" }}
+      position="relative"
     >
-      <Heading fontSize="xl">{title}</Heading>
-      <HStack spacing={2} my={2}>
-      <Badge>Default</Badge><Badge>Default</Badge>
-      </HStack>
-      
-      <Text>{desc}</Text>
-      <Flex ><Link href={link}>{link}</Link></Flex>
-      <Text fontSize={"sm"}>12/11/2020</Text>
+      <Heading fontSize="xl">{name}</Heading>
+      <Text>{major}</Text>
+      <Text fontSize={"sm"}>{date}</Text>
     </Box>
   );
 }
@@ -42,57 +36,22 @@ export default function Hero({
   image,
   ctaLink,
   ctaText,
+  education,
   ...rest
 }) {
   return (
     <Box style={{pageBreakAfter:"auto",pageBreakInside:"avoid"}} position="relative" wrap="no-wrap" px={8} {...rest}>
-      {/* <Stack> */}
+
         <Heading  mb={2} as="h1" size="xl" fontWeight="bold" color="primary.800">
          Education
         </Heading>
-        <Feature
+        {education.map(data=><Feature
+                name={data.name}
+          date={data.date}
+          major={data.major}
+        />)}
         
-        link="http://localhost:3000"
-          title="Plan Money"
-          desc="The future can be even brighter but a goal without a plan is just a wish"
-        />
-        <Feature
-        
-        link="http://localhost:3000"
-          title="Plan Money"
-          desc="The future can be even brighter but a goal without a plan is just a wish"
-        />
-         <Feature
-        
-        link="http://localhost:3000"
-          title="Plan Money"
-          desc="The future can be even brighter but a goal without a plan is just a wish"
-        />
-         <Feature
-        
-        link="http://localhost:3000"
-          title="Plan Money"
-          desc="The future can be even brighter but a goal without a plan is just a wish"
-        />
-         <Feature
-        
-        link="http://localhost:3000"
-          title="Plan Money"
-          desc="The future can be even brighter but a goal without a plan is just a wish"
-        />
-         <Feature
-     
-        link="http://localhost:3000"
-          title="Plan Money"
-          desc="The future can be even brighter but a goal without a plan is just a wish"
-        />
-         <Feature
-        
-        link="http://localhost:3000"
-          title="Plan Money"
-          desc="The future can be even brighter but a goal without a plan is just a wish"
-        />
-      {/* </Stack> */}
+
     </Box>
   );
 }

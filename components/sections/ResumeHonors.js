@@ -12,7 +12,7 @@ Link,
   
 } from "@chakra-ui/react";
 import { PhoneIcon } from "@chakra-ui/icons";
-function Feature({ title, desc,link, ...rest }) {
+function Feature({ title, desc,link,date, ...rest }) {
   return (
     <Box
       p={3}
@@ -25,13 +25,9 @@ function Feature({ title, desc,link, ...rest }) {
       mb={3}
     >
       <Heading fontSize="xl">{title}</Heading>
-      <HStack spacing={2} my={2}>
-      <Badge>Default</Badge><Badge>Default</Badge>
-      </HStack>
-      
       <Text>{desc}</Text>
       <Flex ><Link href={link}>{link}</Link></Flex>
-      <Text fontSize={"sm"}>12/11/2020</Text>
+      <Text fontSize={"sm"}>{date}</Text>
     </Box>
   );
 }
@@ -41,21 +37,24 @@ export default function Hero({
   image,
   ctaLink,
   ctaText,
+  awards,
   ...rest
 }) {
   return (
     <Box wrap="no-wrap" px={8} {...rest}>
-      {/* <Stack> */}
+      
         <Heading mb={2} as="h1" size="xl" fontWeight="bold" color="primary.800">
          Honors And Rewards
         </Heading>
-        <Feature
-        link="http://localhost:3000"
-          title="Plan Money"
-          desc="The future can be even brighter but a goal without a plan is just a wish"
-        />
+        {awards.map(data=><Feature
+        title={data.title}
+          link={data.url}
+          desc={data.description}
+          date={data.published_timestamp}
+        />)}
         
-      {/* </Stack> */}
+        
+      
     </Box>
   );
 }

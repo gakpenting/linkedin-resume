@@ -48,20 +48,23 @@ export default function Hero({
 }) {
   return (
     <Box wrap="no-wrap" px={8} {...rest}>
-      {/* <Stack> */}
+    
         <Heading mb={2} as="h1" size="xl" fontWeight="bold" color="primary.800">
          Skills
         </Heading>
-        <HStack spacing={4}>
-          {skill.map(a=><Button shadow="md"
+        
+          {skill.map(a=><Box as="button" shadow="md"
       borderWidth="1px"
       borderColor="green.500"
-  borderRadius="md">{a.name}</Button>  )}
+      p={2}
+      mr={2}
+      mt={2}
+  borderRadius="md">{a.name}</Box>  )}
  
  
-</HStack>
+
         
-      {/* </Stack> */}
+      
     </Box>
   );
 }

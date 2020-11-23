@@ -59,20 +59,20 @@ export default function Hero({
           </Text>
 
           <HStack spacing={5}>
-            <Tag size={"md"} variant="subtle" colorScheme="cyan">
-              <TagLeftIcon boxSize="12px" as={PhoneIcon} />
+            <Tag size={"lg"} variant="subtle" colorScheme="cyan">
+              <TagLeftIcon boxSize="15px"  as={PhoneIcon} />
               <TagLabel>{profile.phone}</TagLabel>
             </Tag>
-            <Tag size={"md"} variant="subtle" colorScheme="cyan">
-              <TagLeftIcon boxSize="12px" as={FaGithub} />
+            <Tag size={"lg"} variant="subtle" colorScheme="cyan">
+              <TagLeftIcon boxSize="15px"  as={FaGithub} />
               <TagLabel>{profile.github}</TagLabel>
             </Tag>
-            <Tag size={"md"} variant="subtle" colorScheme="cyan">
-              <TagLeftIcon boxSize="12px" as={FaTwitter} />
+            <Tag size={"lg"} variant="subtle"  colorScheme="cyan">
+              <TagLeftIcon boxSize="15px"  as={FaTwitter} />
               <TagLabel>{profile.twitter}</TagLabel>
             </Tag>
-            <Tag size={"md"} variant="subtle" colorScheme="cyan">
-              <TagLeftIcon boxSize="12px" as={FaDev} />
+            <Tag size={"lg"} variant="subtle" colorScheme="cyan">
+              <TagLeftIcon boxSize="20px"  as={FaDev} />
               <TagLabel>{profile.devto}</TagLabel>
             </Tag>
           </HStack>

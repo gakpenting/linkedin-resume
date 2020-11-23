@@ -24,9 +24,9 @@ function Feature({ name, date, desc, ...rest }) {
       style={{ pageBreakAfter: "auto", pageBreakInside: "avoid" }}
       position="relative"
     >
-      <Heading fontSize="xl">{title}</Heading>
+      <Heading fontSize="xl">{name}</Heading>
       <Text>{desc}</Text>
-      <Text fontSize={"sm"}>12/11/2020</Text>
+      <Text fontSize={"sm"}>{date}</Text>
     </Box>
   );
 }
@@ -41,17 +41,17 @@ export default function Hero({
 }) {
   return (
     <Box wrap="no-wrap" px={8} {...rest}>
-      {/* <Stack> */}
       <Heading mb={2} as="h1" size="xl" fontWeight="bold" color="primary.800">
         Experience
       </Heading>
-      <Feature
-        link="http://localhost:3000"
-        title="Plan Money"
-        desc="The future can be even brighter but a goal without a plan is just a wish"
-      />
+      {experience.map(data=><Feature
+        name={data.name}
+        desc={data.description}
+        date={data.date}
+      />)}
+      
 
-      {/* </Stack> */}
+      
     </Box>
   );
 }

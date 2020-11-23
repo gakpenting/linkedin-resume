@@ -7,14 +7,14 @@ import ResumeHonors from "../components/sections/ResumeHonors";
 import ResumeSkills from "../components/sections/ResumeSkills";
 import ResumeEducation from "../components/sections/ResumeEducation";
 import ResumeExperience from "../components/sections/ResumeExperience";
-import faunadb, { query as q } from "faunadb"
-import {Flex,Box} from "@chakra-ui/react"
-
-export default function Home({profile,skill,education,experience}) {
+import faunadb, { query as q } from "faunadb";
+import {Flex,Box} from "@chakra-ui/react";
+import axios from "axios";
+export default function Home({profile,skill,education,experience,awards,projects,openSource}) {
   return (
     <>
       <Head>
-        <title>My page title</title>
+        <title>Resume</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Flex
@@ -29,16 +29,16 @@ export default function Home({profile,skill,education,experience}) {
    
   </Flex>
 <Box style={{pageBreakInside:"auto"}} mt={5}>
-<ResumeProjects />
+<ResumeProjects projects={projects}/>
     </Box>  
     <Box style={{pageBreakInside:"auto"}} mt={5}>
-<ResumeOpenSource />
+<ResumeOpenSource openSource={openSource} />
     </Box>  
     <Box style={{pageBreakInside:"auto"}} mt={5}>
 <ResumeSkills skill={skill}/>
     </Box>  
     <Box style={{pageBreakInside:"auto"}} mt={5}>
-<ResumeHonors />
+<ResumeHonors awards={awards}/>
     </Box>  
     <Box style={{pageBreakInside:"auto"}} mt={5}>
 <ResumeEducation  education={education}/>
@@ -77,12 +77,18 @@ export async function getStaticProps() {
         q.Lambda(x => q.Get(x))
       )
   );
+  const awards=await axios.get("https://dev.to/api/articles?username=spiritbro1&tag=rewardspiritbro1")
+  const projects=await axios.get("https://dev.to/api/articles?username=spiritbro1&tag=projectspiritbro1")
+  const openSource=await axios.get("https://dev.to/api/articles?username=spiritbro1&tag=opensourcespiritbro1")
   return {
     props: {
       profile:profile.data[0].data,
       education:education.data.map(a=>a.data),
       experience:experience.data.map(a=>a.data),
       skill:skill.data.map(a=>a.data),
+      awards:awards.data.filter(data=>data.user.username==="spiritbro1"),
+      projects:projects.data.filter(data=>data.user.username==="spiritbro1"),
+      openSource:openSource.data.filter(data=>data.user.username==="spiritbro1"),
     },
   }
 }
