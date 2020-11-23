@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { FaDev,FaGithub,FaTwitter } from 'react-icons/fa';
 import {
   Box,
   Button,
@@ -13,15 +14,16 @@ import {
   HStack,
   TagLeftIcon,
   Tag,
-  TagLabel
+  TagLabel,
 } from "@chakra-ui/react";
-import {PhoneIcon} from "@chakra-ui/icons"
+import { PhoneIcon } from "@chakra-ui/icons";
 export default function Hero({
   title,
   subtitle,
   image,
   ctaLink,
   ctaText,
+  profile,
   ...rest
 }) {
   return (
@@ -30,57 +32,52 @@ export default function Hero({
       justify={{ base: "center", md: "space-around", xl: "space-between" }}
       direction={{ base: "column-reverse", md: "row" }}
       wrap="no-wrap"
-    
       px={8}
       {...rest}
     >
-      <VStack >
-        
-          <Heading
-            as="h1"
-            size="xl"
-            fontWeight="bold"
-            color="primary.800"
-            textAlign={["center", "center", "left", "left"]}
-          >
-            Febriano Akbar Ramadhani
-          </Heading>
-          <Heading
-            as="h4"
-            size="md"
-            color="primary.800"
-            opacity="0.8"
-            fontWeight="normal"
-            lineHeight={1.5}
-            textAlign={["center", "center", "left", "left"]}
-          >
-            <Text align="center" mb={5}>Software Engineer</Text>
-            
-            <HStack spacing={5}>
-            <Tag size={"md"}  variant="subtle" colorScheme="cyan">
-      <TagLeftIcon boxSize="12px" as={PhoneIcon} />
-      <TagLabel>Cyan</TagLabel>
-    </Tag>
-    <Tag size={"md"}  variant="subtle" colorScheme="cyan">
-      <TagLeftIcon boxSize="12px" as={PhoneIcon} />
-      <TagLabel>Cyan</TagLabel>
-    </Tag>
-    <Tag size={"md"}  variant="subtle" colorScheme="cyan">
-      <TagLeftIcon boxSize="12px" as={PhoneIcon} />
-      <TagLabel>Cyan</TagLabel>
-    </Tag>
-    <Tag size={"md"}  variant="subtle" colorScheme="cyan">
-      <TagLeftIcon boxSize="12px" as={PhoneIcon} />
-      <TagLabel>Cyan</TagLabel>
-    </Tag>  
-            </HStack>
-          
-          </Heading>
+      <VStack>
+        <Heading
+          as="h1"
+          size="xl"
+          fontWeight="bold"
+          color="primary.800"
+          textAlign={["center", "center", "left", "left"]}
+        >
+          {profile.name}
+        </Heading>
+        <Heading
+          as="h4"
+          size="md"
+          color="primary.800"
+          opacity="0.8"
+          fontWeight="normal"
+          lineHeight={1.5}
+          textAlign={["center", "center", "left", "left"]}
+        >
+          <Text align="center" mb={5}>
+  {profile.occupation}
+          </Text>
 
-          
-       
+          <HStack spacing={5}>
+            <Tag size={"md"} variant="subtle" colorScheme="cyan">
+              <TagLeftIcon boxSize="12px" as={PhoneIcon} />
+              <TagLabel>{profile.phone}</TagLabel>
+            </Tag>
+            <Tag size={"md"} variant="subtle" colorScheme="cyan">
+              <TagLeftIcon boxSize="12px" as={FaGithub} />
+              <TagLabel>{profile.github}</TagLabel>
+            </Tag>
+            <Tag size={"md"} variant="subtle" colorScheme="cyan">
+              <TagLeftIcon boxSize="12px" as={FaTwitter} />
+              <TagLabel>{profile.twitter}</TagLabel>
+            </Tag>
+            <Tag size={"md"} variant="subtle" colorScheme="cyan">
+              <TagLeftIcon boxSize="12px" as={FaDev} />
+              <TagLabel>{profile.devto}</TagLabel>
+            </Tag>
+          </HStack>
+        </Heading>
       </VStack>
-      
     </Flex>
   );
 }

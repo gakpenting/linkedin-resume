@@ -2,17 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import {
   Box,
-Link, 
+  Link,
   Heading,
   Stack,
   Text,
   Flex,
   Badge,
   HStack,
-  
 } from "@chakra-ui/react";
 import { PhoneIcon } from "@chakra-ui/icons";
-function Feature({ title, desc,link, ...rest }) {
+function Feature({ name, date, desc, ...rest }) {
   return (
     <Box
       p={3}
@@ -22,15 +21,11 @@ function Feature({ title, desc,link, ...rest }) {
       borderRadius="md"
       mb={3}
       {...rest}
-      style={{pageBreakAfter:"auto",pageBreakInside:"avoid"}} position="relative"
+      style={{ pageBreakAfter: "auto", pageBreakInside: "avoid" }}
+      position="relative"
     >
       <Heading fontSize="xl">{title}</Heading>
-      <HStack spacing={2} my={2}>
-      <Badge>Default</Badge><Badge>Default</Badge>
-      </HStack>
-      
       <Text>{desc}</Text>
-      <Flex ><Link href={link}>{link}</Link></Flex>
       <Text fontSize={"sm"}>12/11/2020</Text>
     </Box>
   );
@@ -41,20 +36,21 @@ export default function Hero({
   image,
   ctaLink,
   ctaText,
+  experience,
   ...rest
 }) {
   return (
     <Box wrap="no-wrap" px={8} {...rest}>
       {/* <Stack> */}
-        <Heading as="h1" size="xl" fontWeight="bold" color="primary.800">
-         Experience
-        </Heading>
-        <Feature
+      <Heading mb={2} as="h1" size="xl" fontWeight="bold" color="primary.800">
+        Experience
+      </Heading>
+      <Feature
         link="http://localhost:3000"
-          title="Plan Money"
-          desc="The future can be even brighter but a goal without a plan is just a wish"
-        />
-        
+        title="Plan Money"
+        desc="The future can be even brighter but a goal without a plan is just a wish"
+      />
+
       {/* </Stack> */}
     </Box>
   );

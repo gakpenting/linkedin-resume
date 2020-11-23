@@ -7,9 +7,10 @@ import ResumeHonors from "../components/sections/ResumeHonors";
 import ResumeSkills from "../components/sections/ResumeSkills";
 import ResumeEducation from "../components/sections/ResumeEducation";
 import ResumeExperience from "../components/sections/ResumeExperience";
+import faunadb, { query as q } from "faunadb"
 import {Flex,Box} from "@chakra-ui/react"
-//081217925090
-export default function Home({profile}) {
+
+export default function Home({profile,skill,education,experience}) {
   return (
     <>
       <Head>
@@ -34,16 +35,16 @@ export default function Home({profile}) {
 <ResumeOpenSource />
     </Box>  
     <Box style={{pageBreakInside:"auto"}} mt={5}>
-<ResumeSkills />
+<ResumeSkills skill={skill}/>
     </Box>  
     <Box style={{pageBreakInside:"auto"}} mt={5}>
 <ResumeHonors />
     </Box>  
     <Box style={{pageBreakInside:"auto"}} mt={5}>
-<ResumeEducation  />
+<ResumeEducation  education={education}/>
     </Box>  
     <Box style={{pageBreakInside:"auto"}} mt={5}>
-<ResumeExperience />
+<ResumeExperience experience={experience} />
     </Box>  
     </>
   );
@@ -58,10 +59,30 @@ export async function getStaticProps() {
         q.Lambda(x => q.Get(x))
       )
   );
-  
+  const education=await serverClient.query(
+    q.Map(
+        q.Paginate(q.Documents(q.Collection('education'))),
+        q.Lambda(x => q.Get(x))
+      )
+  );
+  const skill=await serverClient.query(
+    q.Map(
+        q.Paginate(q.Documents(q.Collection('skill'))),
+        q.Lambda(x => q.Get(x))
+      )
+  );
+  const experience=await serverClient.query(
+    q.Map(
+        q.Paginate(q.Documents(q.Collection('experience'))),
+        q.Lambda(x => q.Get(x))
+      )
+  );
   return {
     props: {
-      profile:profile.data[0],
+      profile:profile.data[0].data,
+      education:education.data.map(a=>a.data),
+      experience:experience.data.map(a=>a.data),
+      skill:skill.data.map(a=>a.data),
     },
   }
 }

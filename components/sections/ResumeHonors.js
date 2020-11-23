@@ -46,7 +46,7 @@ export default function Hero({
   return (
     <Box wrap="no-wrap" px={8} {...rest}>
       {/* <Stack> */}
-        <Heading as="h1" size="xl" fontWeight="bold" color="primary.800">
+        <Heading mb={2} as="h1" size="xl" fontWeight="bold" color="primary.800">
          Honors And Rewards
         </Heading>
         <Feature

@@ -47,7 +47,7 @@ export default function Hero({
   return (
     <Box style={{pageBreakAfter:"auto",pageBreakInside:"avoid"}} position="relative" wrap="no-wrap" px={8} {...rest}>
       {/* <Stack> */}
-        <Heading   as="h1" size="xl" fontWeight="bold" color="primary.800">
+        <Heading  mb={2} as="h1" size="xl" fontWeight="bold" color="primary.800">
          Education
         </Heading>
         <Feature

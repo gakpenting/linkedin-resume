@@ -43,19 +43,21 @@ export default function Hero({
   image,
   ctaLink,
   ctaText,
+  skill,
   ...rest
 }) {
   return (
     <Box wrap="no-wrap" px={8} {...rest}>
       {/* <Stack> */}
-        <Heading as="h1" size="xl" fontWeight="bold" color="primary.800">
+        <Heading mb={2} as="h1" size="xl" fontWeight="bold" color="primary.800">
          Skills
         </Heading>
         <HStack spacing={4}>
- <Button shadow="md"
+          {skill.map(a=><Button shadow="md"
       borderWidth="1px"
       borderColor="green.500"
-      borderRadius="md">Green</Button>  
+  borderRadius="md">{a.name}</Button>  )}
+ 
  
 </HStack>
         
