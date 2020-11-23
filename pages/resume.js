@@ -10,6 +10,8 @@ import ResumeExperience from "../components/sections/ResumeExperience";
 import faunadb, { query as q } from "faunadb";
 import {Flex,Box} from "@chakra-ui/react";
 import axios from "axios";
+import { NextSeo } from 'next-seo';
+
 export default function Home({profile,skill,education,experience,awards,projects,openSource}) {
   return (
     <>
@@ -17,6 +19,7 @@ export default function Home({profile,skill,education,experience,awards,projects
         <title>Resume</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
+      <NextSeo noindex={true} nofollow={true}/>
       <Flex
     
     direction="column"
