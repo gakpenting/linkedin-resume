@@ -9,10 +9,12 @@ import {
   Stack,
   Text,
   Center,
+  Link
 } from "@chakra-ui/react";
-function Feature({ title, desc, ...rest }) {
+function Feature({ title, desc,link, ...rest }) {
   return (
     <Box
+    as={Link}
       p={3}
       shadow="md"
       borderWidth="1px"
@@ -20,7 +22,9 @@ function Feature({ title, desc, ...rest }) {
       flex="1"
       borderRadius="md"
       {...rest}
-      as="button"
+      cursor="pointer"
+      href={link}
+      target="_blank"
     >
       <Heading fontSize="xl">{title}</Heading>
       <Text >{desc}</Text>
@@ -33,6 +37,7 @@ export default function Hero({
   image,
   ctaLink,
   ctaText,
+  project,
   ...rest
 }) {
   return (
@@ -67,18 +72,14 @@ export default function Hero({
           >
             {subtitle}
           </Heading>
-
-          <Feature
-        title="Plan Money"
-        desc="The future can be even brighter but a goal without a plan is just a wish"
-      />
-        <Feature
-        title="Plan Money"
-        desc="The future can be even brighter but a goal without a plan is just a wish"
-      />
-      <Box as="button" borderRadius="md" bg="tomato" color="white" px={4} h={8}>
-  See All
-</Box>
+{project.map(data=>   <Feature
+        title={data.title}
+        desc={data.description}
+        link={data.url}
+      />)}
+       
+      
+      
       </Stack>
       
     </Flex>

@@ -20,6 +20,9 @@ jobs:
         run: |
           npm install
           node capture.js
+          node dropbox.js
+        env:
+          DROPBOX_KEY: ${{ secrets.DROPBOX_KEY }}
       - name: Upload PDF
         uses: actions/upload-artifact@v1
         with:

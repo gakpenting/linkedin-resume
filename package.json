@@ -24,6 +24,8 @@
     "react-icons": "^3.11.0"
   },
   "devDependencies": {
+    "dropbox": "^8.1.0",
+    "googleapis": "^65.0.0",
     "puppeteer": "^5.5.0"
   }
 }

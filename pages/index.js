@@ -3,10 +3,9 @@ import Head from "next/head";
 import Hero from "../components/sections/Hero";
 import Projects from "../components/sections/Projects";
 import OpenSource from "../components/sections/OpenSource";
-import Blog from "../components/sections/Blog";
 import LandingLayout from "../components/layouts/LandingLayout";
-
-export default function Home() {
+import axios from "axios"
+export default function Home({project,openSource}) {
   return (
     <>
       <Head>
@@ -17,10 +16,22 @@ export default function Home() {
       <LandingLayout align="center" height="100% !important" bg="green.100">
 
         <Hero />
-        <Projects />
-        <OpenSource />
-        <Blog />
+        <Projects project={project} />
+        <OpenSource openSource={openSource}/>
+
       </LandingLayout>
     </>
   );
+}
+export async function getStaticProps() {
+ 
+  const project=await axios.get("https://dev.to/api/articles?username=spiritbro1&tag=projectspiritbro1&state=all")
+  const openSource=await axios.get("https://dev.to/api/articles?username=spiritbro1&tag=opensourcespiritbro1&state=all")
+  return {
+    props: {
+          project:project.data.filter(data=>data.user.username==="spiritbro1"),
+          openSource:openSource.data.filter(data=>data.user.username==="spiritbro1"),
+      
+    },
+  }
 }

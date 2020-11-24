@@ -9,6 +9,7 @@ import {
   VStack,
   Text,
   Center,
+  Link,
 } from "@chakra-ui/react";
 
 export default function Hero({
@@ -59,6 +60,9 @@ export default function Hero({
             px="4"
             lineHeight="1"
             size="md"
+            href="https://t.me/lokimonoton"
+            target="_blank"
+            as={Link}
           >
             Contact Me
           </Button>

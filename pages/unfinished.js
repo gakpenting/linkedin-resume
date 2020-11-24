@@ -17,11 +17,11 @@ export default function Home({unfinished}) {
 }
 export async function getStaticProps() {
  
-  const unfinished=await axios.get("https://dev.to/api/articles?username=spiritbro1&tags=unfinishedspiritbro1")
+  const unfinished=await axios.get("https://dev.to/api/articles?username=spiritbro1&tag=unfinishedspiritbro1&state=all")
   
   return {
     props: {
-          unfinished:unfinished.data.filter(data=>data.user.username==="spiritbro1"&&data.tags.includes("unfinishedspiritbro1")),
+          unfinished:unfinished.data.filter(data=>data.user.username==="spiritbro1"),
       
     },
   }

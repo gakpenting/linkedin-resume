@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Flex, Text,Select,Link} from "@chakra-ui/react";
 import Logo from "../ui/Logo";
 import { Link as ReachLink } from "@reach/router"
-
+import {FaTwitter,FaGithub} from "react-icons/fa"
 const MenuItems = props => {
   const { children, isLast, to = "/", ...rest } = props;
   return (
@@ -82,9 +82,9 @@ const Header = props => {
           direction={["column", "row", "row", "row"]}
           pt={[4, 4, 0, 0]}
         >
-          <MenuItems as="button" to="/projects">Projects</MenuItems>
-          <MenuItems as="button" to="/open-source">Open Source </MenuItems>
-          <MenuItems as="button" to="/blog">Blog </MenuItems>
+          <MenuItems as="button" to="https://twitter.com/spiritbrother"><FaTwitter/></MenuItems>
+          <MenuItems as="button" to="https://github.com/spiritbro1"><FaGithub/> </MenuItems>
+      
           
           {/* <MenuItems ><Select bg="white" >
   <option value="option1" selected="true">English</option>
