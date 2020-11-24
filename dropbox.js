@@ -14,5 +14,6 @@ const path = require("path");
       },
       readStream: fs.createReadStream(path.join(__dirname, '/febriano-resume.pdf'))
   }, (err, result, response) => {
-      console.log(response)
+    if(err) console.log("errr")
+      console.log("cukses")
   });
