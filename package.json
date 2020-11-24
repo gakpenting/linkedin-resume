@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "dropbox": "^8.1.0",
+    "dropbox-v2-api": "^2.4.30",
     "googleapis": "^65.0.0",
     "puppeteer": "^5.5.0"
   }
