@@ -11,7 +11,7 @@ const path = require("path");
         // This uploads basic.js to the root of your dropbox
         dbx.filesUpload({ path: '/febriano-resume.pdf', contents })
             .then((response) => {
-            console.log(response);
+            console.log("cukses");
         })
             .catch((uploadErr) => {
             console.log(uploadErr);
