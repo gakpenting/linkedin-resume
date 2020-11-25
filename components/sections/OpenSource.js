@@ -72,7 +72,8 @@ export default function Hero({
           >
             {subtitle}
           </Heading>
-{openSource.map(data=>   <Feature
+{openSource.map((data,index)=>   <Feature
+key={index}
         title={data.title}
         desc={data.description}
         link={data.url}

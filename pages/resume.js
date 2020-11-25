@@ -80,9 +80,9 @@ export async function getStaticProps() {
         q.Lambda(x => q.Get(x))
       )
   );
-  const awards=await axios.get("https://dev.to/api/articles?username=spiritbro1&tag=rewardspiritbro1&state=all")
-  const projects=await axios.get("https://dev.to/api/articles?username=spiritbro1&tag=projectspiritbro1&state=all")
-  const openSource=await axios.get("https://dev.to/api/articles?username=spiritbro1&tag=opensourcespiritbro1&state=all")
+  const awards=await axios.get("https://dev.to/api/articles?username=spiritbro1&tag=rewardspiritbro1english&state=all")
+  const projects=await axios.get("https://dev.to/api/articles?username=spiritbro1&tag=projectspiritbro1english&state=all")
+  const openSource=await axios.get("https://dev.to/api/articles?username=spiritbro1&tag=opensourcespiritbro1english&state=all")
   return {
     props: {
       profile:profile.data[0].data,
