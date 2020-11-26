@@ -2,7 +2,10 @@
 import Head from "next/head";
 import axios from "axios"
 import Unfinished from "../components/sections/Unfinished";
-export default function Home({unfinished}) {
+import {useState} from "react"
+export default function Home() {
+  const [unfinished,setUnfinished]=useState([])
+  getUnfinished().then(data=>setUnfinished(data)) 
   return (
     <>
       <Head>
@@ -15,14 +18,7 @@ export default function Home({unfinished}) {
     </>
   );
 }
-export async function getStaticProps() {
- 
+async function getUnfinished(){
   const unfinished=await axios.get("https://dev.to/api/articles?username=spiritbro1&tag=unfinishedspiritbro1&state=all")
-  
-  return {
-    props: {
-          unfinished:unfinished.data.filter(data=>data.user.username==="spiritbro1"),
-      
-    },
-  }
+  return unfinished.data.filter(data=>data.user.username==="spiritbro1")
 }

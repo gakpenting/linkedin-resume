@@ -6,7 +6,14 @@ import OpenSource from "../components/sections/OpenSource";
 import Blog from "../components/sections/Blog";
 import LandingLayout from "../components/layouts/LandingLayout";
 import axios from "axios";
-export default function Home({ project, openSource, blog }) {
+import {useState} from "react"
+export default function Home() {
+  const [project,setProject]=useState([])
+  const [openSource,setOpenSource]=useState([])
+  const [blog,setBlog]=useState([])
+  getProject().then(data=>setProject(data))
+  getOpenSource().then(data=>setOpenSource(data))
+  getBlog().then(data=>setBlog(data))
   return (
     <>
       <Head>
@@ -39,47 +46,46 @@ async function getDesc(id) {
     return "";
   }
 }
-export async function getStaticProps() {
+async function getProject(){
   const project = await axios.get(
     "https://dev.to/api/articles?username=spiritbro1&tag=projectspiritbro1english&state=all"
   );
+  return await Promise.all(
+    project.data
+      .filter((data) => data.user.username === "spiritbro1")
+      .map(async (a) => {
+        const description = await getDesc(a.id);
+        return {
+          title: a.title,
+          url: a.url,
+          published_timestamp: a.published_timestamp,
+          description,
+        };
+      })
+  )
+}
+async function getOpenSource(){
   const openSource = await axios.get(
     "https://dev.to/api/articles?username=spiritbro1&tag=opensourcespiritbro1english&state=all"
   );
+  return await Promise.all(
+    openSource.data
+      .filter((data) => data.user.username === "spiritbro1")
+      .map(async (a) => {
+        const description = await getDesc(a.id);
+
+        return {
+          title: a.title,
+          url: a.url,
+          published_timestamp: a.published_timestamp,
+          description,
+        };
+      })
+  )
+}
+async function getBlog(){
   const blog = await axios.get(
     "https://dev.to/api/articles?username=spiritbro1&tag=blogspiritbro1english&state=all"
   );
-  console.log(blog);
-  return {
-    props: {
-      project: await Promise.all(
-        project.data
-          .filter((data) => data.user.username === "spiritbro1")
-          .map(async (a) => {
-            const description = await getDesc(a.id);
-            return {
-              title: a.title,
-              url: a.url,
-              published_timestamp: a.published_timestamp,
-              description,
-            };
-          })
-      ),
-      openSource: await Promise.all(
-        openSource.data
-          .filter((data) => data.user.username === "spiritbro1")
-          .map(async (a) => {
-            const description = await getDesc(a.id);
-
-            return {
-              title: a.title,
-              url: a.url,
-              published_timestamp: a.published_timestamp,
-              description,
-            };
-          })
-      ),
-      blog: blog.data.filter((data) => data.user.username === "spiritbro1"),
-    },
-  };
+  return blog.data.filter((data) => data.user.username === "spiritbro1")
 }

@@ -57,7 +57,7 @@ export default function Hero({
           title={data.title}
           desc={data.description}
           date={data.published_timestamp}
-          tag={data.tag_list.filter(tag=>tag!=="projectspiritbro1"&&tag!=="unfinishedspiritbro1")}
+          tag={data.tag_list.filter(tag=>tag!=="projectspiritbro1english"&&tag!=="unfinishedspiritbro1")}
         />)}
         
        
